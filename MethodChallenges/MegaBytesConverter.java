@@ -1,3 +1,5 @@
+package MethodChallenges;
+
 import java.util.Scanner;
 
 public class MegaBytesConverter {
