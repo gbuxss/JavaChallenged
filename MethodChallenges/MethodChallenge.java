@@ -1,5 +1,5 @@
 package MethodChallenges;
-
+/* A beginner console program to identify player's positions based on the score*/
 public class MethodChallenge {
 
     public static void main(String[] args) {
@@ -18,13 +18,15 @@ public class MethodChallenge {
 
 
     }
-
+    // create a method to display player's name and position
     public static void displayHighScorePosition(String playerName, int playerPosition) {
 
         System.out.println(playerName + " managed to get into position " + playerPosition + " on the high score list");
 
     }
 
+
+    // method to identify position based on the score provided
     public static int calculateHIghScorePosition(int playerScore) {
 
         int position = 4;
