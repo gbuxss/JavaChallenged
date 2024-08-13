@@ -21,7 +21,7 @@ public class CheckNumber {
         } else if (number < 0) {
             System.out.println("negative");
 
-        } else if (number == 0) {
+        } else {
             System.out.println("zero");
         }
     }
