@@ -4,11 +4,16 @@ public class MethodOverloading {
 
     public static void main(String[] args) {
 
-        //System.out.println(convertToCentimeter(5,7));
-        //System.out.println(convertToCentimeter(6));
+        System.out.println(convertToCentimeter(5,7));
+        System.out.println(convertToCentimeter(6));
 
-        System.out.println(getDurationString(67));
-        System.out.println(getDurationString(66, 67));
+        System.out.println(getDurationString(55));
+        System.out.println(getDurationString(66, 55));
+
+        System .out.println(area(5.00));
+        System .out.println(area(-1));
+        System .out.println(area(5, 4.00));
+        System .out.println(area(-5, 4.00));
     }
 
     public static double convertToCentimeter(int heightInInch) {
@@ -51,5 +56,19 @@ public class MethodOverloading {
 
 
         return (hours + "h " + remainingMinutes + "m " + seconds + "s");
+    }
+
+    public static double area (double radius){
+        if (radius < 0)
+            return -1.0;
+        double PI = 3.14159265359;
+
+        return PI * radius * radius;
+    }
+
+    public static double area (double x, double y){
+        if (x < 0 || y <0)
+            return -1.0;
+        return x * y;
     }
 }
