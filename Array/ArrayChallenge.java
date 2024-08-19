@@ -1,3 +1,9 @@
+/***
+ * program to create a random int of n length and sort it in descending order
+ * two functions---> create random array of length n randomIntArrays() & sortedDescArray() to desc sort the array
+ *
+ */
+
 package Array;
 
 import java.util.Arrays;
@@ -41,7 +47,7 @@ public class ArrayChallenge {
                     sortedArray[i] = sortedArray[i + 1];
                     sortedArray[i + 1] = temp;
                     flag = true;
-                    //System.out.println(Arrays.toString(sortedArray)); uncomment this line to see action step by step 
+                    //System.out.println(Arrays.toString(sortedArray)); uncomment this line to see action step by step
                 }
             }
 
