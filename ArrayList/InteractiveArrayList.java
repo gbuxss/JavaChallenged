@@ -21,16 +21,21 @@ public class InteractiveArrayList {
         boolean flag = true;
         while (flag) {
             displayMenu();
-            int receivedInput = Integer.parseInt(sc.nextLine());
-            switch (receivedInput) {
-                case 0 -> {
-                    System.out.println("Shutting down . . .");
-                    flag = false;
+            try{
+                int receivedInput = Integer.parseInt(sc.nextLine());
+                switch (receivedInput) {
+                    case 0 -> {
+                        System.out.println("Shutting down . . .");
+                        flag = false;
+                    }
+                    case 1 -> addItems();
+                    case 2 -> removeItems();
+                    default -> System.out.println("Invalid input only option 0, 1, 2 are allowed");
                 }
-                case 1 -> addItems();
-                case 2 -> removeItems();
-                default -> System.out.println("Invalid input try again");
+            } catch (NumberFormatException e){
+                System.out.println("Invalid input . Please enter a number");
             }
+
         }
     }
 
