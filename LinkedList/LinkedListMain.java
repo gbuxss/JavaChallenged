@@ -9,7 +9,17 @@ public class LinkedListMain {
     public static LinkedList<Place> places = new LinkedList<>();
     public static void main(String[] args) {
         Place adelaide = new Place("Adelaide", 1374);
+        Place brisbane = new Place("brisbane", 917);
+        Place perth = new Place("perth", 3923);
+        Place AliceSpring = new Place("Alice Spring", 2771);
+        Place darwin = new Place("Darwin", 3974);
+        Place sydney = new Place("Sydney", 0);
         addPlaces(places, adelaide);
+        addPlaces(places, brisbane);
+        addPlaces(places, perth);
+        addPlaces(places, AliceSpring);
+        addPlaces(places, darwin);
+        addPlaces(places, sydney);
         System.out.println(places);
 
 
@@ -64,6 +74,22 @@ public class LinkedListMain {
         if(list.contains(town)){
             System.out.println("Found duplicates: " + town);
             return;
+        }
+
+        for (Place p : list){
+            if(p.getTown().equalsIgnoreCase(town.getTown())){
+                System.out.println("Found duplicates: " + town);
+                return;
+            }
+        }
+
+        int matchedIndex = 0;
+        for (var listItem : list) {
+            if(town.getDistance() < listItem.getDistance()){
+                list.add(matchedIndex, town);
+                return;
+            }
+            matchedIndex++;
         }
         list.add(town);
     }
