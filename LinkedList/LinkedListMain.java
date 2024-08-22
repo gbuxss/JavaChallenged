@@ -2,11 +2,15 @@ package LinkedList;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.ListIterator;
 import java.util.Scanner;
 
 public class LinkedListMain {
 
     public static LinkedList<Place> places = new LinkedList<>();
+    private static ListIterator<Place> listIterator = places.listIterator();
+
+
     public static void main(String[] args) {
         Place adelaide = new Place("Adelaide", 1374);
         Place brisbane = new Place("brisbane", 917);
@@ -20,10 +24,10 @@ public class LinkedListMain {
         addPlaces(places, AliceSpring);
         addPlaces(places, darwin);
         addPlaces(places, sydney);
-        System.out.println(places);
 
+//        forwardTraverse();
 
-       // inputActions();
+        inputActions();
     }
 
 
@@ -55,9 +59,18 @@ public class LinkedListMain {
             Scanner sc = new Scanner(System.in);
             String inputText = sc.nextLine().toLowerCase();
             switch (inputText) {
-                case "f", "forward" -> System.out.println("This is forward");
-                case "b", "backward" -> System.out.println("This is backward");
-                case "l", "list places" -> System.out.println("List places");
+                case "f", "forward" -> {
+                    forwardTraverse();
+                    System.out.println("This is forward");
+                }
+                case "b", "backward" -> {
+                    backwardTraverse();
+                    System.out.println("This is backward");
+                }
+                case "l", "list places" -> {
+                    System.out.println("List of places".toUpperCase());
+                    System.out.println(places);
+                }
                 case "m", "menu" -> inputActions();
                 case "q", "quit" -> {
                     System.out.println("Shutting down . . .");
@@ -65,19 +78,17 @@ public class LinkedListMain {
                 }
                 default -> System.out.println("Invalid input");
             }
-
-
         }
     }
 
-    public static void addPlaces(LinkedList<Place> list, Place town){
-        if(list.contains(town)){
+    public static void addPlaces(LinkedList<Place> list, Place town) {
+        if (list.contains(town)) {
             System.out.println("Found duplicates: " + town);
             return;
         }
 
-        for (Place p : list){
-            if(p.getTown().equalsIgnoreCase(town.getTown())){
+        for (Place p : list) {
+            if (p.getTown().equalsIgnoreCase(town.getTown())) {
                 System.out.println("Found duplicates: " + town);
                 return;
             }
@@ -85,12 +96,43 @@ public class LinkedListMain {
 
         int matchedIndex = 0;
         for (var listItem : list) {
-            if(town.getDistance() < listItem.getDistance()){
+            if (town.getDistance() < listItem.getDistance()) {
                 list.add(matchedIndex, town);
                 return;
             }
             matchedIndex++;
         }
         list.add(town);
+    }
+
+    public static void traverse() {
+        boolean quiteLoop = false;
+        boolean forward = true;
+        while (!quiteLoop) {
+            if (!listIterator.hasPrevious()) {
+                System.out.println("Original :" + listIterator.next());
+                forward = true;
+            }
+
+            if (!listIterator.hasNext()) {
+                System.out.println(listIterator.previous());
+                forward = false;
+            }
+        }
+    }
+
+
+    public static void forwardTraverse() {
+        traverse();
+        while (listIterator.hasNext()) {
+            System.out.println(listIterator.next());
+        }
+    }
+
+    public static void backwardTraverse() {
+        traverse();
+        while (listIterator.hasPrevious()) {
+            System.out.println(listIterator.previous());
+        }
     }
 }
