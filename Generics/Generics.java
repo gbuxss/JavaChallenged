@@ -70,5 +70,7 @@ class Test<T>{
         genericMethod("Jeevan");
         genericMethod(15);
         genericMethod(12.99);
+
+
     }
 }
